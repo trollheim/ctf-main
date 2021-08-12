@@ -22,4 +22,4 @@ task stage{
 
 }
 
-stage.dependsOn(":sb-rest:bootJar")
+stage.dependsOn(":ctf-webapp:bootJar")
