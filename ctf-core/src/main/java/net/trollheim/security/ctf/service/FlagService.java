@@ -16,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,8 +44,14 @@ public class FlagService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         AppUser user = (AppUser) authentication.getPrincipal();
 
-        Flag flag = flagRepository.findOne(FlagSpec.FIND_ACTIVE).orElseThrow(() -> new RuntimeException("no active flag"));
+        Optional<Flag> optionalFlag = flagRepository.findOne(FlagSpec.FIND_ACTIVE);
 
+        if(!optionalFlag.isPresent()){
+            return new FlagDetailsDto(0,"No active flag","no active flag, please wait","",false);
+        }
+
+
+        Flag flag = optionalFlag.get();
         FlagDetailsDto flagDetailsDto = new FlagDetailsDto();
         flagDetailsDto.setDescription(flag.getDescription());
         flagDetailsDto.setNumber(flag.getNumber());

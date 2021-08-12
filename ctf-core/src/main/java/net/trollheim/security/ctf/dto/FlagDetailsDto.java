@@ -7,6 +7,14 @@ public class FlagDetailsDto {
     private String url;
     private boolean submitted;
 
+    public FlagDetailsDto(int number, String title, String description, String url, boolean submitted) {
+        this.number = number;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.submitted = submitted;
+    }
+
     public FlagDetailsDto() {
     }
 
