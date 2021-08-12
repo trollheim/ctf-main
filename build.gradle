@@ -17,3 +17,9 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task stage{
+
+}
+
+stage.dependsOn(":sb-rest:bootJar")
