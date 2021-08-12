@@ -1,0 +1,5 @@
+rootProject.name = 'ctf-main'
+include 'ctf-core'
+include 'ctf-webapp'
+include 'ctf-utils'
+
