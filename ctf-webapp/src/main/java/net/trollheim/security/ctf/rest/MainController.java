@@ -3,6 +3,7 @@ package net.trollheim.security.ctf.rest;
 import net.trollheim.security.ctf.dto.*;
 import net.trollheim.security.ctf.service.FlagService;
 import net.trollheim.security.ctf.service.SummissionService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class MainController {
     }
 
     @PostMapping(value = "/api/submit", consumes = "application/json")
-    public Result register(@RequestBody SubmissionDto submissionDto) {
+    public Result register(@Validated @RequestBody SubmissionDto submissionDto) {
         return summissionService.submit(submissionDto);
     }
 

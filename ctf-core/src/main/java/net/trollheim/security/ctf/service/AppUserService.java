@@ -12,6 +12,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 @Service
 public class AppUserService implements UserDetailsService {
 
@@ -40,11 +44,29 @@ public class AppUserService implements UserDetailsService {
             //TODO exception hierarchy
             throw new RuntimeException();
         }
+
+
+
         String password = passwordEncoder.encode(createUserDto.getPassword());
         AppUser appUser = new AppUser(createUserDto.getUsername(), password);
-        appUserRepository.save(appUser);
-        inviteCodeRepository.delete(inviteCode);
+        addInviteCodes(appUser);
+        appUser = appUserRepository.save(appUser);
+        inviteCode.setActive(false);
+        inviteCode.setApplicant(appUser);
         return appUser;
+    }
+
+    private void addInviteCodes(AppUser appUser) {
+        Set<InviteCode> invites = new HashSet<>();
+
+        for (int i=0;i<5;i++){
+            InviteCode code = new InviteCode();
+            code.setInviteCode(UUID.randomUUID().toString());
+            code.setActive(true);
+            invites.add(code);
+        }
+        appUser.setInviteCodes(invites);
+
     }
 
 }

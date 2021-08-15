@@ -30,6 +30,9 @@ public class Flag {
     @Column(nullable = false)
     private LocalDateTime endDate;
 
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER,cascade={CascadeType.ALL})
+    private Set<InviteCode> inviteCodes;
+
 
     @OneToMany(mappedBy = "flag", fetch = FetchType.EAGER,cascade={CascadeType.ALL})
     private Set<Submission> submissions;
@@ -96,5 +99,13 @@ public class Flag {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Set<InviteCode> getInviteCodes() {
+        return inviteCodes;
+    }
+
+    public void setInviteCodes(Set<InviteCode> inviteCodes) {
+        this.inviteCodes = inviteCodes;
     }
 }

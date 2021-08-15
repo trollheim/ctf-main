@@ -1,9 +1,14 @@
 package net.trollheim.security.ctf.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 public class SubmissionDto {
+
 
     private int flag;
 
+    @NotBlank
     private String code;
 
     public int getFlag() {

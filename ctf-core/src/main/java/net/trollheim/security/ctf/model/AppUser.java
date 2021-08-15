@@ -30,6 +30,8 @@ public class AppUser implements UserDetails {
     @OneToMany(mappedBy = "appUser", fetch = FetchType.EAGER,cascade={CascadeType.ALL})
     private Set<Submission> submissions;
 
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER,cascade={CascadeType.ALL})
+    private Set<InviteCode> inviteCodes;
 
     public AppUser(){
         enabled = true;
@@ -103,5 +105,13 @@ public class AppUser implements UserDetails {
 
     public void setSubmissions(Set<Submission> submissions) {
         this.submissions = submissions;
+    }
+
+    public Set<InviteCode> getInviteCodes() {
+        return inviteCodes;
+    }
+
+    public void setInviteCodes(Set<InviteCode> inviteCodes) {
+        this.inviteCodes = inviteCodes;
     }
 }

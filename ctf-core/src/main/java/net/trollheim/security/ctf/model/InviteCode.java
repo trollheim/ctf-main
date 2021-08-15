@@ -1,9 +1,6 @@
 package net.trollheim.security.ctf.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class InviteCode {
@@ -13,12 +10,20 @@ public class InviteCode {
     private Long id;
 
 
-    //TODO  AppUser owner; AppUser applicant
 
 
-    String inviteCode;
 
+    @OneToOne
+    @JoinColumn(name = "owner_id")
+    private AppUser owner;
 
+    @OneToOne
+    @JoinColumn(name = "applicant_id")
+    private AppUser applicant;
+
+    private String inviteCode;
+
+    private boolean active;
 
     public Long getId() {
         return id;
@@ -34,5 +39,29 @@ public class InviteCode {
 
     public void setInviteCode(String inviteCode) {
         this.inviteCode = inviteCode;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public AppUser getApplicant() {
+        return applicant;
+    }
+
+    public void setApplicant(AppUser applicant) {
+        this.applicant = applicant;
+    }
+
+    public AppUser getOwner() {
+        return owner;
+    }
+
+    public void setOwner(AppUser owner) {
+        this.owner = owner;
     }
 }

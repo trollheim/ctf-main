@@ -1,9 +1,39 @@
 package net.trollheim.security.ctf.dto;
 
-public interface CreateUserDto {
-    String getInviteCode();
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
-    String getPassword();
+public class CreateUserDto {
+    @NotBlank
+    private String inviteCode;
+    @NotBlank
+    private String password;
 
-    String getUsername();
+
+    @Email
+    private String username;
+
+    public String getInviteCode() {
+        return inviteCode;
+    }
+
+    public void setInviteCode(String inviteCode) {
+        this.inviteCode = inviteCode;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

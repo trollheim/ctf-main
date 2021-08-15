@@ -4,6 +4,7 @@ import net.trollheim.security.ctf.dto.CreateUserDto;
 import net.trollheim.security.ctf.dto.Result;
 import net.trollheim.security.ctf.model.AppUser;
 import net.trollheim.security.ctf.service.AppUserService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/userAPI/register", consumes = "application/json")
-    public Result register(@RequestBody CreateUserDto createUserDto) {
+    public Result register(@Validated @RequestBody CreateUserDto createUserDto) {
 
         AppUser user = appUserService.createUser(createUserDto);
         return Result.OK;
