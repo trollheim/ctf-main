@@ -40,7 +40,7 @@ public class AppUserService implements UserDetailsService {
 
     public AppUser createUser(CreateUserDto createUserDto) {
         InviteCode inviteCode = inviteCodeRepository.findByInviteCode(createUserDto.getInviteCode());
-        if (inviteCode == null) {
+        if (inviteCode == null || !inviteCode.isActive()) {
             //TODO exception hierarchy
             throw new RuntimeException();
         }
