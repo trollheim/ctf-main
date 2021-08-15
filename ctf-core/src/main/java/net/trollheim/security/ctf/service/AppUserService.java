@@ -49,10 +49,11 @@ public class AppUserService implements UserDetailsService {
 
         String password = passwordEncoder.encode(createUserDto.getPassword());
         AppUser appUser = new AppUser(createUserDto.getUsername(), password);
-        addInviteCodes(appUser);
         appUser = appUserRepository.save(appUser);
+        addInviteCodes(appUser);
         inviteCode.setActive(false);
         inviteCode.setApplicant(appUser);
+        inviteCodeRepository.save(inviteCode);
         return appUser;
     }
 
@@ -63,6 +64,7 @@ public class AppUserService implements UserDetailsService {
             InviteCode code = new InviteCode();
             code.setInviteCode(UUID.randomUUID().toString());
             code.setActive(true);
+            code.setOwner(appUser);
             invites.add(code);
         }
         appUser.setInviteCodes(invites);
