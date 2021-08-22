@@ -38,6 +38,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _submission_component_submission_component_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./submission-component/submission-component.component */ "./src/app/submission-component/submission-component.component.ts");
+/* harmony import */ var _flag_list_flag_list_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./flag-list/flag-list.component */ "./src/app/flag-list/flag-list.component.ts");
+
 
 
 
@@ -46,8 +48,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [
-    { path: '', redirectTo: 'flag', pathMatch: 'full' },
-    { path: 'flag', component: _submission_component_submission_component_component__WEBPACK_IMPORTED_MODULE_4__["SubmissionComponentComponent"] },
+    { path: '', redirectTo: 'flags', pathMatch: 'full' },
+    { path: 'flags', component: _flag_list_flag_list_component__WEBPACK_IMPORTED_MODULE_5__["FlagListComponent"] },
+    { path: 'flag/:id', component: _submission_component_submission_component_component__WEBPACK_IMPORTED_MODULE_4__["SubmissionComponentComponent"] },
     { path: 'score', component: _score_component_score_component_component__WEBPACK_IMPORTED_MODULE_1__["ScoreComponentComponent"] },
     { path: 'ranking', component: _ranking_component_ranking_component_component__WEBPACK_IMPORTED_MODULE_0__["RankingComponentComponent"] }
 ];
@@ -91,7 +94,7 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 13, vars: 3, consts: [["ngbNav", "", 1, "nav-tabs"], ["nav", "ngbNav"], [3, "ngbNavItem"], ["routerLink", "/flag", "ngbNavLink", ""], ["routerLink", "/score", "ngbNavLink", ""], ["routerLink", "/ranking", "ngbNavLink", ""], ["role", "main"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 13, vars: 3, consts: [["ngbNav", "", 1, "nav-tabs"], ["nav", "ngbNav"], [3, "ngbNavItem"], ["routerLink", "/flags", "ngbNavLink", ""], ["routerLink", "/score", "ngbNavLink", ""], ["routerLink", "/ranking", "ngbNavLink", ""], ["role", "main"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "ul", 0, 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "li", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "a", 3);
@@ -152,6 +155,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/__ivy_ngcc__/fesm2015/ng-bootstrap.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var _flag_list_flag_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./flag-list/flag-list.component */ "./src/app/flag-list/flag-list.component.ts");
+
 
 
 
@@ -171,15 +176,18 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
             _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__["NgbNavModule"],
             _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__["NgbModule"]
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
         _score_component_score_component_component__WEBPACK_IMPORTED_MODULE_4__["ScoreComponentComponent"],
         _submission_component_submission_component_component__WEBPACK_IMPORTED_MODULE_5__["SubmissionComponentComponent"],
-        _ranking_component_ranking_component_component__WEBPACK_IMPORTED_MODULE_6__["RankingComponentComponent"]], imports: [_angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
+        _ranking_component_ranking_component_component__WEBPACK_IMPORTED_MODULE_6__["RankingComponentComponent"],
+        _flag_list_flag_list_component__WEBPACK_IMPORTED_MODULE_10__["FlagListComponent"]], imports: [_angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"],
         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__["NgbNavModule"],
         _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__["NgbModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
@@ -188,19 +196,110 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
                     _score_component_score_component_component__WEBPACK_IMPORTED_MODULE_4__["ScoreComponentComponent"],
                     _submission_component_submission_component_component__WEBPACK_IMPORTED_MODULE_5__["SubmissionComponentComponent"],
-                    _ranking_component_ranking_component_component__WEBPACK_IMPORTED_MODULE_6__["RankingComponentComponent"]
+                    _ranking_component_ranking_component_component__WEBPACK_IMPORTED_MODULE_6__["RankingComponentComponent"],
+                    _flag_list_flag_list_component__WEBPACK_IMPORTED_MODULE_10__["FlagListComponent"]
                 ],
                 imports: [
                     _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
                     _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"],
                     _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                     _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
+                    _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__["NgbNavModule"],
                     _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__["NgbModule"]
                 ],
                 providers: [],
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
             }]
     }], null, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/flag-list/flag-list.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/flag-list/flag-list.component.ts ***!
+  \**************************************************/
+/*! exports provided: FlagListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FlagListComponent", function() { return FlagListComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _flag_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../flag.service */ "./src/app/flag.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
+
+
+
+
+const _c0 = function (a1) { return ["/flag/", a1]; };
+function FlagListComponent_div_2_a_6_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "a", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Go somewhere");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const flag_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](1, _c0, flag_r1.number));
+} }
+function FlagListComponent_div_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "h5", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "p", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, FlagListComponent_div_2_a_6_Template, 2, 3, "a", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const flag_r1 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](flag_r1.title);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](flag_r1.description);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !flag_r1.submitted);
+} }
+class FlagListComponent {
+    constructor(service) {
+        this.service = service;
+        this.flags = [];
+    }
+    ngOnInit() {
+        var self = this;
+        this.service.getFlags().then(flags => self.setFlags(flags)).catch(this.error);
+    }
+    setFlags(f) {
+        console.log("received flags");
+        this.flags = f;
+    }
+    error(err) {
+        console.log(err);
+    }
+}
+FlagListComponent.ɵfac = function FlagListComponent_Factory(t) { return new (t || FlagListComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_flag_service__WEBPACK_IMPORTED_MODULE_1__["FlagService"])); };
+FlagListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FlagListComponent, selectors: [["flag-list"]], decls: 3, vars: 1, consts: [[1, "jumbotron"], [1, "row"], ["class", "card card-custom", 4, "ngFor", "ngForOf"], [1, "card", "card-custom"], [1, "card-body"], [1, "card-title"], [1, "card-text"], ["href", "#", "class", "btn btn-primary ", 3, "routerLink", 4, "ngIf"], ["href", "#", 1, "btn", "btn-primary", 3, "routerLink"]], template: function FlagListComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, FlagListComponent_div_2_Template, 7, 3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.flags);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"]], styles: [".card-custom[_ngcontent-%COMP%] {\r\n    width: 40rem;\r\n    margin: 10px;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmxhZy1saXN0L2ZsYWctbGlzdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtJQUNaLFlBQVk7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9mbGFnLWxpc3QvZmxhZy1saXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FyZC1jdXN0b20ge1xyXG4gICAgd2lkdGg6IDQwcmVtO1xyXG4gICAgbWFyZ2luOiAxMHB4O1xyXG59Il19 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](FlagListComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'flag-list',
+                templateUrl: './flag-list.component.html',
+                styleUrls: ['./flag-list.component.css']
+            }]
+    }], function () { return [{ type: _flag_service__WEBPACK_IMPORTED_MODULE_1__["FlagService"] }]; }, null); })();
 
 
 /***/ }),
@@ -231,9 +330,14 @@ class FlagService {
             return yield this.http.post("/api/submit", submission).toPromise();
         });
     }
-    getFlag() {
+    getFlags() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            return yield this.http.get("/api/flag").toPromise();
+            return yield this.http.get("/api/flags").toPromise();
+        });
+    }
+    getFlag(id) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            return yield this.http.get("/api/flag/" + id).toPromise();
         });
     }
     getRanks() {
@@ -451,8 +555,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SubmissionComponentComponent", function() { return SubmissionComponentComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _flag_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../flag.service */ "./src/app/flag.service.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+
 
 
 
@@ -479,8 +585,9 @@ function SubmissionComponentComponent_div_12_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r0.submission.code);
 } }
 class SubmissionComponentComponent {
-    constructor(service) {
+    constructor(service, route) {
         this.service = service;
+        this.route = route;
         this.BLANK = {
             number: "",
             title: "",
@@ -495,15 +602,23 @@ class SubmissionComponentComponent {
             url: "",
             submitted: false,
         };
+        this.TEST = [this.BLANK, this.ERR];
         this.submission = {
             flag: "",
             code: ""
         };
-        this.flag = this.BLANK;
+        this.route.params.subscribe(params => {
+            console.log(params);
+            if (params['id']) {
+                this.loadFlag(params['id']);
+            }
+        });
+    }
+    loadFlag(id) {
+        var self = this;
+        this.service.getFlag(id).then(result => self.setFlag(result)).catch(err => self.flag = self.ERR);
     }
     ngOnInit() {
-        var self = this;
-        this.service.getFlag().then(result => self.setFlag(result)).catch(err => self.flag = self.ERR);
     }
     setFlag(flag) {
         this.flag = flag;
@@ -514,12 +629,12 @@ class SubmissionComponentComponent {
         this.service.submitFlag(this.submission).then(r => self.submitted(r));
     }
     submitted(r) {
-        var self = this;
-        this.service.getFlag().then(result => self.setFlag(result)).catch(err => self.flag = self.ERR);
+        //TODO find better way 
+        window.location.reload();
         alert(r);
     }
 }
-SubmissionComponentComponent.ɵfac = function SubmissionComponentComponent_Factory(t) { return new (t || SubmissionComponentComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_flag_service__WEBPACK_IMPORTED_MODULE_1__["FlagService"])); };
+SubmissionComponentComponent.ɵfac = function SubmissionComponentComponent_Factory(t) { return new (t || SubmissionComponentComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_flag_service__WEBPACK_IMPORTED_MODULE_1__["FlagService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"])); };
 SubmissionComponentComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SubmissionComponentComponent, selectors: [["app-submission-component"]], decls: 13, vars: 5, consts: [[1, "jumbotron"], [1, "card"], [1, "card-header"], [1, "card-body"], [1, "card-title"], [1, "card-text"], [1, "card-link"], ["ng-class", "card-footer", 4, "ngIf"], ["ng-class", "card-footer"], [1, "input-group", "mb-3"], ["type", "text", "placeholder", "Submit code", "aria-label", "Submit code", "aria-describedby", "button-addon2", 1, "form-control", 3, "ngModel", "ngModelChange"], [1, "input-group-append"], ["type", "button", "id", "button-addon2", 1, "btn", "btn-outline-secondary", 3, "click"]], template: function SubmissionComponentComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
@@ -553,7 +668,7 @@ SubmissionComponentComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__[
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("href", ctx.flag.url, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.flag.submitted);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N1Ym1pc3Npb24tY29tcG9uZW50L3N1Ym1pc3Npb24tY29tcG9uZW50LmNvbXBvbmVudC5jc3MifQ== */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgModel"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N1Ym1pc3Npb24tY29tcG9uZW50L3N1Ym1pc3Npb24tY29tcG9uZW50LmNvbXBvbmVudC5jc3MifQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SubmissionComponentComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -561,7 +676,7 @@ SubmissionComponentComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__[
                 templateUrl: './submission-component.component.html',
                 styleUrls: ['./submission-component.component.css']
             }]
-    }], function () { return [{ type: _flag_service__WEBPACK_IMPORTED_MODULE_1__["FlagService"] }]; }, null); })();
+    }], function () { return [{ type: _flag_service__WEBPACK_IMPORTED_MODULE_1__["FlagService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }]; }, null); })();
 
 
 /***/ }),

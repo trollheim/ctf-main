@@ -10,13 +10,14 @@ import net.trollheim.security.ctf.model.AppUser;
 import net.trollheim.security.ctf.model.Flag;
 import net.trollheim.security.ctf.repository.AppUserRepository;
 import net.trollheim.security.ctf.repository.FlagRepository;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,6 +25,9 @@ public class FlagService {
 
     private final FlagRepository flagRepository;
     private final AppUserRepository appUserRepository;
+    private final Function<Flag, FlagDetailsDto> flagConverter = flag -> new FlagDetailsDto(flag.getNumber(), flag.getTitle(), flag.getDescription(),
+            flag.getUrl(), flag.getSubmissions().stream().filter(s -> s.getAppUser().getId().equals(((AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId())).findAny().isPresent());
+
 
     public FlagService(FlagRepository flagRepository, AppUserRepository appUserRepository) {
         this.flagRepository = flagRepository;
@@ -40,26 +44,20 @@ public class FlagService {
     }
 
 
-    public FlagDetailsDto getActiveFlagDetails() {
+    public List<FlagDetailsDto> getActiveFlagsDetails() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        AppUser user = (AppUser) authentication.getPrincipal();
 
-        Optional<Flag> optionalFlag = flagRepository.findOne(FlagSpec.FIND_ACTIVE);
 
-        if(!optionalFlag.isPresent()){
-            return new FlagDetailsDto(0,"No active flag","no active flag, please wait","",false);
+        List<Flag> activeFlags = flagRepository.findAll(FlagSpec.FIND_ACTIVE);
+
+        if (activeFlags.isEmpty()) {
+            return Collections.emptyList();
         }
 
-
-        Flag flag = optionalFlag.get();
-        FlagDetailsDto flagDetailsDto = new FlagDetailsDto();
-        flagDetailsDto.setDescription(flag.getDescription());
-        flagDetailsDto.setNumber(flag.getNumber());
-        flagDetailsDto.setTitle(flag.getTitle());
-        flagDetailsDto.setUrl(flag.getUrl());
         //TODO use query for that
-        flagDetailsDto.setSubmitted(flag.getSubmissions().stream().filter(s -> s.getAppUser().getId().equals(user.getId())).findAny().isPresent());
-        return flagDetailsDto;
+        List<FlagDetailsDto> flagsDtos = activeFlags.stream().map(flagConverter).collect(Collectors.toList());
+
+        return flagsDtos;
     }
 
     public ScoreDto getUserScore() {
@@ -73,6 +71,7 @@ public class FlagService {
         scoreDto.setFlags(flags);
         return scoreDto;
     }
+
     public RankDto getRanks() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         System.out.println(authentication.getPrincipal());
@@ -89,4 +88,9 @@ public class FlagService {
     }
 
 
+    public FlagDetailsDto getFlagDetails(int number) {
+        Optional<Flag> flagOptional = flagRepository.findByNumber(number);
+        //TODO check is flag active
+        return flagOptional.map(flagConverter).orElseThrow(() -> new RuntimeException("Not found"));
+    }
 }

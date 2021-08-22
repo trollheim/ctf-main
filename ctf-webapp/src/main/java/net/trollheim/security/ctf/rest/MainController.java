@@ -4,10 +4,9 @@ import net.trollheim.security.ctf.dto.*;
 import net.trollheim.security.ctf.service.FlagService;
 import net.trollheim.security.ctf.service.SummissionService;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController()
 public class MainController {
@@ -31,9 +30,14 @@ public class MainController {
         return flagService.getRanks();
     }
 
-    @GetMapping("/api/flag")
-    public FlagDetailsDto getFlagDetails() {
-        return flagService.getActiveFlagDetails();
+    @GetMapping("/api/flags")
+    public List<FlagDetailsDto> getFlagsDetails() {
+        return flagService.getActiveFlagsDetails();
+    }
+
+    @GetMapping("/api/flag/{number}")
+    public FlagDetailsDto getFlagDetails(@PathVariable("number") Integer number) {
+        return flagService.getFlagDetails(number);
     }
 
     @GetMapping("/api/score")
