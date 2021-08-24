@@ -1,15 +1,13 @@
 package net.trollheim.security.ctf.service;
 
 
-import net.trollheim.security.ctf.dto.FlagDetailsDto;
-import net.trollheim.security.ctf.dto.FlagDto;
-import net.trollheim.security.ctf.dto.RankDto;
-import net.trollheim.security.ctf.dto.ScoreDto;
+import net.trollheim.security.ctf.dto.*;
 import net.trollheim.security.ctf.dto.specifications.FlagSpec;
 import net.trollheim.security.ctf.model.AppUser;
 import net.trollheim.security.ctf.model.Flag;
 import net.trollheim.security.ctf.repository.AppUserRepository;
 import net.trollheim.security.ctf.repository.FlagRepository;
+import net.trollheim.security.ctf.repository.InviteCodeRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -25,13 +23,16 @@ public class FlagService {
 
     private final FlagRepository flagRepository;
     private final AppUserRepository appUserRepository;
+    private final InviteCodeRepository inviteCodeRepository;
+
     private final Function<Flag, FlagDetailsDto> flagConverter = flag -> new FlagDetailsDto(flag.getNumber(), flag.getTitle(), flag.getDescription(),
             flag.getUrl(), flag.getSubmissions().stream().filter(s -> s.getAppUser().getId().equals(((AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId())).findAny().isPresent());
 
 
-    public FlagService(FlagRepository flagRepository, AppUserRepository appUserRepository) {
+    public FlagService(FlagRepository flagRepository, AppUserRepository appUserRepository, InviteCodeRepository inviteCodeRepository) {
         this.flagRepository = flagRepository;
         this.appUserRepository = appUserRepository;
+        this.inviteCodeRepository = inviteCodeRepository;
     }
 
 
@@ -92,5 +93,12 @@ public class FlagService {
         Optional<Flag> flagOptional = flagRepository.findByNumber(number);
         //TODO check is flag active
         return flagOptional.map(flagConverter).orElseThrow(() -> new RuntimeException("Not found"));
+    }
+
+    public List<InviteCodeDto> getInvites() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        AppUser user = (AppUser) authentication.getPrincipal();
+
+        return inviteCodeRepository.findByOwnerId(user.getId()).stream().map(code -> new InviteCodeDto(code.getInviteCode(), code.isActive())).collect(Collectors.toList());
     }
 }

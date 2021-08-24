@@ -29,7 +29,7 @@ public class AddFlag implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-//
+
 //        Flag flag = new Flag();
 //        flag.setCode("flag-code");
 //        flag.setEndDate(LocalDateTime.now().plusMonths(1L));

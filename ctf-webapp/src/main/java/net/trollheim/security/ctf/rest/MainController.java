@@ -44,4 +44,9 @@ public class MainController {
     public ScoreDto getUserScore() {
         return flagService.getUserScore();
     }
+
+    @GetMapping("/api/invites")
+    public List<InviteCodeDto> getInvites() {
+        return flagService.getInvites();
+    }
 }

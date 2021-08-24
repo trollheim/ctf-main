@@ -15,7 +15,7 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long>{
 
     Optional<AppUser> findByUsername(String username);
 
-    @Query(value = "SELECT username as name, count(s.id) as score FROM app_user u left join submission s on u.id=s.user_id group by u.id, username order by score desc limit 10;", nativeQuery = true)
+    @Query(value = "SELECT username as name, count(s.id) as score FROM app_user u left join submission s on u.id=s.user_id where u.enabled = true group by u.id, username order by score desc limit 10;", nativeQuery = true)
     List<RankDto.Score> findTopPlayers();
 
 
