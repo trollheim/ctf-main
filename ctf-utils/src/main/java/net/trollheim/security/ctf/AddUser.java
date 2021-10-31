@@ -32,20 +32,23 @@ public class AddUser implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        appUserRepository.findAll().stream().flatMap(u-> inviteCodeRepository.findByOwnerId(u.getId()).stream()).map(i->i.getInviteCode()).forEach(System.out::println);
+//        appUserRepository.findAll().stream().flatMap(u-> inviteCodeRepository.findByOwnerId(u.getId()).stream()).map(i->i.getInviteCode()).forEach(System.out::println);
 
-//        for (AppUser u : appUserRepository.findAll()){
-//            Set<InviteCode> codes = new HashSet<>();
-//            for (int i=0;i<5;i++) {
+        AppUser user = appUserRepository.findByUsername("aegon").orElseThrow(RuntimeException::new);
+        Set<InviteCode> codes = user.getInviteCodes();
+        codes.forEach(c-> System.out.println(c.getInviteCode()+" "+c.isActive()));
+////        for (AppUser u : appUserRepository.findAll()){
+////            Set<InviteCode> codes = new HashSet<>();
+//            for (int i=0;i<20;i++) {
 //                String code = UUID.randomUUID().toString();
 //                InviteCode ic  = new InviteCode();
 //                ic.setActive(true);
 //                ic.setInviteCode(code);
-//                ic.setOwner(u);
+//                ic.setOwner(user);
 //                codes.add(ic);
 //            }
-//            u.setInviteCodes(codes);
-//            appUserRepository.save(u);
+////            u.setInviteCodes(codes);
+//            appUserRepository.save(user);
 //        }
 
 //        appUserRepository.findTopPlayers().stream().map(u->u.getName()+
