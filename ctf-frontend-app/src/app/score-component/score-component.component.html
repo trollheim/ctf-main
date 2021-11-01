@@ -1,0 +1,20 @@
+<div class="jumbotron">
+    <div class="card">
+        <div class="card-header">
+            <h4>Score</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Total score {{score.total}}</h5>
+
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let item of score.flags" class="list-group-item">
+                    <div class="alert " role="alert" [ngClass]="item.score>0?'alert-success': 'alert-danger' ">
+                        <span class="badge" [ngClass]="item.score>0?'badge-success': 'badge-danger'">{{item.score}}</span> {{item.title}} </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</div>

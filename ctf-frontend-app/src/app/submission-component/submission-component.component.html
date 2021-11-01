@@ -1,0 +1,23 @@
+<div class="jumbotron">
+    <div class="card">
+        <div class="card-header">
+            <h4>Flag number {{flag.number}}</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{flag.title}}</h5>
+
+            <p class="card-text">{{flag.description}}</p>
+            <a [attr.href]="flag.url" class="card-link">link</a>
+
+        </div>
+        <div *ngIf="!flag.submitted" ng-class="card-footer">
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Submit code" aria-label="Submit code" aria-describedby="button-addon2" [(ngModel)]="submission.code">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="submit()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

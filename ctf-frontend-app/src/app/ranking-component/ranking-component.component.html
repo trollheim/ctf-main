@@ -1,0 +1,20 @@
+<div class="jumbotron">
+    <div class="card">
+        <div class="card-header">
+            <h4>Your ranking is {{rank.player}}</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Top 10 Players</h5>
+
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let item of rank.top" class="list-group-item">
+                    <div class="alert " role="alert alert-primary">
+                        <span class="badge badge-primary">{{item.score}}</span> {{item.name}} </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="jumbotron">
+    <div class="row">
+        <div class="card card-custom" *ngFor="let flag of flags;">
+
+            <div class="card-body ">
+                <h5 class="card-title ">{{flag.title}}</h5>
+                <p class="card-text ">{{flag.description}}</p>
+                <a href="#" *ngIf="!flag.submitted" [routerLink]="['/flag/',flag.number]" class="btn btn-primary ">View Flag</a>
+            </div>
+        </div>
+    </div>
+</div>
