@@ -2,4 +2,6 @@ rootProject.name = 'ctf-main'
 include 'ctf-core'
 include 'ctf-webapp'
 include 'ctf-utils'
+include 'ctf-frontend-app'
+include 'ctf-frontend-index'
 

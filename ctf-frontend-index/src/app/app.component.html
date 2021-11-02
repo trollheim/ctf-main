@@ -1,0 +1,14 @@
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li [ngbNavItem]="1">
+        <a routerLink="/login" ngbNavLink>Login</a>
+
+    </li>
+    <li [ngbNavItem]="2"><a routerLink="/register" ngbNavLink>Register</a></li>
+    <li [ngbNavItem]="3"><a routerLink="/about" ngbNavLink>About</a></li>
+</ul>
+
+
+<div role="main">
+
+    <router-outlet></router-outlet>
+</div>
