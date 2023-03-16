@@ -1,5 +1,6 @@
 package net.trollheim.security.ctf.model;
 
+import net.trollheim.security.ctf.repository.FlagRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,18 +21,46 @@ public class AppUser implements UserDetails {
     @Column(unique = true,nullable = false)
     private String username;
 
+//    @JoinTable(
+//            name = "appuser_roles",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "role_id"))
+//    private List<AppUserRole> roles;
+
+
+    public int getRoles() {
+        return roles;
+    }
+
+    public void setRoles(int roles) {
+        this.roles = roles;
+    }
+
+    private int roles;
     private String password;
 
     private boolean enabled;
 
-    private int invitations;
+
 
 
     @OneToMany(mappedBy = "appUser", fetch = FetchType.EAGER,cascade={CascadeType.ALL})
     private Set<Submission> submissions;
 
-    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER,cascade={CascadeType.ALL})
-    private Set<InviteCode> inviteCodes;
+
+
+
+    public Organisation getOrganisation() {
+        return organisation;
+    }
+
+    public void setOrganisation(Organisation organisation) {
+        this.organisation = organisation;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "organisation_id")
+    private Organisation organisation;
 
     public AppUser(){
         enabled = true;
@@ -41,7 +70,7 @@ public class AppUser implements UserDetails {
         enabled = true;
         this.username = username;
         this.password = password;
-        invitations = 5;
+
     }
 
 
@@ -83,7 +112,8 @@ public class AppUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(GrantedAuthorities.USER);
+
+        return GrantedAuthorities.fromId(roles);
     }
 
     public String getPassword() {
@@ -107,11 +137,4 @@ public class AppUser implements UserDetails {
         this.submissions = submissions;
     }
 
-    public Set<InviteCode> getInviteCodes() {
-        return inviteCodes;
-    }
-
-    public void setInviteCodes(Set<InviteCode> inviteCodes) {
-        this.inviteCodes = inviteCodes;
-    }
 }

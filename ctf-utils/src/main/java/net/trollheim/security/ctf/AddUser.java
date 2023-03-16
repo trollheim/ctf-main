@@ -34,8 +34,8 @@ public class AddUser implements CommandLineRunner {
     public void run(String... args) throws Exception {
 //        appUserRepository.findAll().stream().flatMap(u-> inviteCodeRepository.findByOwnerId(u.getId()).stream()).map(i->i.getInviteCode()).forEach(System.out::println);
 
-        AppUser user = appUserRepository.findByUsername("aegon").orElseThrow(RuntimeException::new);
-        Set<InviteCode> codes = user.getInviteCodes();
+        AppUser user = appUserRepository.findByUsername("test123").orElseThrow(RuntimeException::new);
+        Set<InviteCode> codes = user.getOrganisation().getInviteCodes();
         codes.forEach(c-> System.out.println(c.getInviteCode()+" "+c.isActive()));
 ////        for (AppUser u : appUserRepository.findAll()){
 ////            Set<InviteCode> codes = new HashSet<>();

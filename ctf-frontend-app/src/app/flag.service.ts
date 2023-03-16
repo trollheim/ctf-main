@@ -1,37 +1,49 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Flag } from './app.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlagService {
+  
+  
+    deleteFlag(id: any) {
+      return this.http.delete("/api/admin/flag/"+id);
+  }
 
   constructor(private http: HttpClient) { }
-  
-  
-  async  submitFlag(submission: any){
-    return await this.http.post("/api/submit", submission).toPromise();
+
+  submitFlag(submission: any){
+    return this.http.post("/api/submit", submission);
   }
 
 
-   async getFlags(){
-    return await this.http.get<string>("/api/flags").toPromise();
+   getFlags(){
+    return  this.http.get<string>("/api/flags");
   }
 
-
-  async getFlag(id){
-    return await this.http.get<string>("/api/flag/"+id).toPromise();
+  createFlag(newFlag : any){
+    return this.http.post("/api/admin/flag/new", newFlag);
   }
 
-  async getInvites(){
-    return await this.http.get<any>("/api/invites").toPromise();
+   getAdminFlags(){
+     return this.http.get<Flag[]>("/api/admin/flag/list");
+   }
+
+  getFlag(id){
+    return  this.http.get<string>("/api/flag/"+id);
   }
 
-  async getRanks(){
-    return await this.http.get<string>("/api/ranks").toPromise();
+  getInvites(){
+    return  this.http.get<any>("/api/invites");
   }
 
-  async getScore(){
-    return await this.http.get<string>("/api/score").toPromise();
+   getRanks(){
+    return  this.http.get<string>("/api/ranks");
+  }
+
+  getScore(){
+    return  this.http.get<string>("/api/score");
   }
 }

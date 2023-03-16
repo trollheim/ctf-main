@@ -3,11 +3,12 @@ package net.trollheim.security.ctf.repository;
 import net.trollheim.security.ctf.dto.InviteCodeDto;
 import net.trollheim.security.ctf.model.InviteCode;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface InviteCodeRepository extends JpaRepository<InviteCode, Long> {
+public interface InviteCodeRepository extends JpaRepository<InviteCode, Long>, JpaSpecificationExecutor<InviteCode> {
 
     InviteCode findByInviteCode(String inviteCode);
 

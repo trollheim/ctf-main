@@ -1,16 +1,24 @@
 <ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li [ngbNavItem]="0">
+    <a ngbNavLink  routerLink="#">
+        <img [src]="user.organisation.logo" width="30" height="30" class="d-inline-block align-top" alt="">
+        {{this.user.organisation.name}}
+      </a>
+    </li>
     <li [ngbNavItem]="1">
         <a routerLink="/flags" ngbNavLink>Active Flag</a>
 
     </li>
-    <li [ngbNavItem]="2"><a routerLink="/score" ngbNavLink>Score</a></li>
-    <li [ngbNavItem]="3"><a routerLink="/ranking" ngbNavLink>Ranking</a></li>
-    <li [ngbNavItem]="4"><a routerLink="/invite" ngbNavLink>Invite codes</a></li>
-    <li [ngbNavItem]="5"><a routerLink="/about" ngbNavLink>About</a></li>
+    <li [ngbNavItem]="2" *ngIf="hasRole('ROLE_USER')"><a routerLink="/score" ngbNavLink>Score</a></li>
+    <li [ngbNavItem]="3" *ngIf="hasRole('ROLE_USER')"><a routerLink="/ranking" ngbNavLink>Ranking</a></li>
+   
+    <li [ngbNavItem]="4" *ngIf="hasRole('ROLE_ORG_ADMIN') || hasRole('ROLE_ADMIN')"> <a routerLink="/invite" ngbNavLink>Invite codes</a></li>
+    <li [ngbNavItem]="5" *ngIf="hasRole('ROLE_ADMIN')">     <a routerLink="/admin"  ngbNavLink>Admin</a></li>
+    <li [ngbNavItem]="7"><a routerLink="/about" ngbNavLink>About</a></li>
+    <li [ngbNavItem]="8"><a ngbNavLink>You are logged as {{user.username}}@{{user.organisation.name}}</a></li>
 </ul>
 
 
 <div role="main">
-
     <router-outlet></router-outlet>
 </div>
