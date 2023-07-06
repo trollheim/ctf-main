@@ -2,9 +2,21 @@
     <h1 class="display-4">Invite codes</h1>
     <p class="lead">If you want to share this application with your friend, share with one of the invite codes.</p>
     <hr class="my-4">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Owner</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let invite of invites;"   [ngClass]="invite.active? 'bg-success' : 'bg-danger'" >
+                <td>  
+                    
+                      {{invite.code}}
+                 
+            </td>
+                <td>        {{invite.owner}}</td>
+</tr></tbody></table></div>
 
-    <ul class="list-group">
-        <li class="list-group-item" [ngClass]="invite.active? 'list-group-item-success' : 'list-group-item-danger' " *ngFor="let invite of invites" class="list-group-item">{{invite.code}}</li>
-    </ul>
-
-</div>
+ 

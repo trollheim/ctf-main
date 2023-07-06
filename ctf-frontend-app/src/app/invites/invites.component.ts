@@ -14,10 +14,10 @@ export class InvitesComponent implements OnInit {
   ]
 
   test = [
-    {"code" : "some-code-4", active : false },
-    {"code" : "some-code-1", active : true },
-    {"code" : "some-code-2", active : true },
-    {"code" : "some-code-3", active : true }
+    {"code" : "some-code-4", owner :"CORPO1", active : false },
+    {"code" : "some-code-1", owner :"CORPO1", active : true },
+    {"code" : "some-code-2", owner :"CORPO1", active : true },
+    {"code" : "some-code-3", owner :"CORPO1", active : true }
     
 
 
@@ -25,7 +25,8 @@ export class InvitesComponent implements OnInit {
 
   ngOnInit(): void {
     var self = this;
-    this.rest.getInvites().then(i => self.invites = i ).catch(err => console.log(err));
+    // this.invites = this.test
+    this.rest.getInvites().subscribe({ next : i => self.invites = i, error :  err => console.log(err)});
   }
 
 }

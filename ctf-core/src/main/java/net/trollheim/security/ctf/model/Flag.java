@@ -11,10 +11,6 @@ public class Flag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @Column(nullable = false)
-    private int number;
-
     @Column(nullable = false)
     private String title;
 
@@ -30,8 +26,16 @@ public class Flag {
     @Column(nullable = false)
     private LocalDateTime endDate;
 
-    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER,cascade={CascadeType.ALL})
-    private Set<InviteCode> inviteCodes;
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    @Column(nullable = false)
+    private LocalDateTime startDate;
 
 
     @OneToMany(mappedBy = "flag", fetch = FetchType.EAGER,cascade={CascadeType.ALL})
@@ -69,13 +73,6 @@ public class Flag {
         this.submissions = submissions;
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
 
     public String getUrl() {
         return url;
@@ -101,11 +98,4 @@ public class Flag {
         this.title = title;
     }
 
-    public Set<InviteCode> getInviteCodes() {
-        return inviteCodes;
-    }
-
-    public void setInviteCodes(Set<InviteCode> inviteCodes) {
-        this.inviteCodes = inviteCodes;
-    }
 }

@@ -32,7 +32,7 @@ public class SummissionService {
         AppUser user = (AppUser) authentication.getPrincipal();
 
 
-        Flag flag = flagRepository.findByNumber(submissionDto.getFlag()).orElseThrow(()->new RuntimeException());
+        Flag flag = flagRepository.findById(submissionDto.getFlag()).orElseThrow(()->new RuntimeException());
 
         //TODO check flag format
 

@@ -13,6 +13,15 @@ import { FlagListComponent } from './flag-list/flag-list.component';
 import { InvitesComponent } from './invites/invites.component';
 import { AboutComponent } from './about/about.component';
 import { ErrorComponent } from './error/error.component';
+ import { UsersManagementComponent } from './admin/users-management/users-management.component';
+import { AdminMainComponent } from './admin/admin-main/admin-main.component';
+import { AdminAddFlagComponent } from './admin/admin-add-flag/admin-add-flag.component';
+import { AdminListFlagsComponent } from './admin/admin-list-flags/admin-list-flags.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { AdminEditFlagComponent } from './admin/admin-edit-flag/admin-edit-flag.component';
+import { AdminOrganisationListComponent } from './admin/admin-organisation-list/admin-organisation-list.component';
+import { AdminOrganisationAddComponent } from './admin/admin-organisation-add/admin-organisation-add.component';
+import { AdminOrganisationEditComponent } from './admin/admin-organisation-edit/admin-organisation-edit.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +32,16 @@ import { ErrorComponent } from './error/error.component';
     FlagListComponent,
      InvitesComponent,
     AboutComponent,
-    ErrorComponent
+    ErrorComponent,
+    UsersManagementComponent,
+    AdminMainComponent,
+    AdminAddFlagComponent,
+    AdminListFlagsComponent,
+    AdminPanelComponent,
+    AdminEditFlagComponent,
+    AdminOrganisationListComponent,
+    AdminOrganisationAddComponent,
+    AdminOrganisationEditComponent
   ],
   imports: [
     FormsModule,

@@ -1,0 +1,54 @@
+<div class="jumbotron">
+    <div class="card">
+        <div class="card-header">
+            <h4> Organisation Admin Panel</h4>
+        </div>
+        <div class="card-body">
+            <div class="mb-3 row">
+                <div class="col-xs-3 col-sm-auto">
+                    <button type="button" class=" btn-primary" routerLink="/admin/org/">Create</button>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Logo</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Users</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let organisation of organisations; index as i">
+
+                        <td>{{ i }}</td>
+                        <td>
+                            <img [src]="organisation.image" width="10" height="10" class="d-inline-block align-top" alt="">
+                        </td>
+                        <td>{{ organisation.name  }}</td>
+                        <td>{{ organisation.users}}</td>
+                   
+                        <td>
+                            <div ngbDropdown class="d-inline-block">
+                                <button type="button" class="btn btn-outline-primary" id="dropdown1"
+                                    ngbDropdownToggle>Actions</button>
+                                <div ngbDropdownMenu aria-labelledby="dropdown1">
+
+                                    <button ngbDropdownItem routerLink="/admin/org/{{organisation.id}}">Edit</button>
+                                    <button ngbDropdownItem (click)="addInvite(organisation.id)">Add Invites</button>
+                                    <button ngbDropdownItem (click)="addUser(organisation.id)">Add User</button>
+                                    <button ngbDropdownItem (click)="delete(organisation.id)">Delete</button>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+    </div>
+</div>

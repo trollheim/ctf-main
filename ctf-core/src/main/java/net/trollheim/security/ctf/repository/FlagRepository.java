@@ -9,5 +9,4 @@ import java.util.Optional;
 
 @Repository
 public interface FlagRepository extends JpaRepository<Flag, Long>, JpaSpecificationExecutor<Flag> {
-    Optional<Flag> findByNumber(Integer flag);
 }

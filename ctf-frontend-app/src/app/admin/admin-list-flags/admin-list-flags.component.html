@@ -1,0 +1,52 @@
+<div class="jumbotron">
+    <div class="card">
+        <div class="card-header">
+            <h4> Flags Admin Panel</h4>
+        </div>
+        <div class="card-body">
+            <div class="mb-3 row">
+                <div class="col-xs-3 col-sm-auto">
+                    <button type="button" class=" btn-primary" routerLink="/admin/flag/">Create</button>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">URL</th>
+                        <th scope="col">Submissions</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let flag of flags; index as i">
+
+                        <td>{{ flag.id }}</td>
+                        <td>{{ flag.title}}</td>
+                        <td>{{ flag.description | slice:0:20 }}</td>
+                        <td>{{ flag.url}}</td>
+                        <td>{{ flag.submissions}}</td>
+                        <td>
+                            <div ngbDropdown class="d-inline-block">
+                                <button type="button" class="btn btn-outline-primary" id="dropdown1"
+                                    ngbDropdownToggle>Actions</button>
+                                <div ngbDropdownMenu aria-labelledby="dropdown1">
+
+                                    <button ngbDropdownItem routerLink="/admin/flag/{{flag.id}}">Edit</button>
+                                    <button ngbDropdownItem>Start</button>
+                                    <button ngbDropdownItem (click)="delete(flag.id)">Delete</button>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+    </div>
+</div>

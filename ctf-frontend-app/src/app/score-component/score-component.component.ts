@@ -29,7 +29,7 @@ export class ScoreComponentComponent implements OnInit {
 
   ngOnInit(): void {
     var self = this;
-    this.service.getScore().then(result => self.score = result).catch(err=> self.score = self.ERR);
+    this.service.getScore().subscribe({ next : result => self.score = result, error : err=> self.score = self.ERR});
   }
 
 }

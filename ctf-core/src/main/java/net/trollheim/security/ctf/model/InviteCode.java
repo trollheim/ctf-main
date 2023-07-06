@@ -5,17 +5,23 @@ import javax.persistence.*;
 @Entity
 public class InviteCode {
 
+    public static final String SEPARATOR = ":::";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public Organisation getOwner() {
+        return owner;
+    }
 
+    public void setOwner(Organisation owner) {
+        this.owner = owner;
+    }
 
-
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "owner_id")
-    private AppUser owner;
+    private Organisation owner;
 
     @OneToOne
     @JoinColumn(name = "applicant_id")
@@ -57,11 +63,6 @@ public class InviteCode {
         this.applicant = applicant;
     }
 
-    public AppUser getOwner() {
-        return owner;
-    }
 
-    public void setOwner(AppUser owner) {
-        this.owner = owner;
-    }
-}
+
+ }
