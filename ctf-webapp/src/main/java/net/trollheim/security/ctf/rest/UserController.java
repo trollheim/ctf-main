@@ -1,6 +1,7 @@
 package net.trollheim.security.ctf.rest;
 
 import net.trollheim.security.ctf.dto.CreateUserDto;
+import net.trollheim.security.ctf.dto.LoggedUserDto;
 import net.trollheim.security.ctf.dto.Result;
 import net.trollheim.security.ctf.model.AppUser;
 import net.trollheim.security.ctf.service.AppUserService;
@@ -28,9 +29,11 @@ public class UserController {
         return Result.OK;
     }
 
-    @GetMapping(path = "/userAPI/register")
-    public Result registerx() {
 
-        return Result.OK;
+
+    @GetMapping(path = "/userAPI/current")
+    public LoggedUserDto currentUser() {
+
+        return appUserService.getLoggedUserDetails();
     }
 }

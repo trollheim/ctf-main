@@ -7,13 +7,7 @@ import java.time.LocalDateTime;
 public class Submission {
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "sub_seq"
-    )
-    @SequenceGenerator(
-            name = "sub_seq"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne

@@ -30,7 +30,7 @@ export class RankingComponentComponent implements OnInit {
   ngOnInit(): void {
     var self = this;
 
-    this.service.getRanks().then(result => self.rank= result).catch(err => self.rank = self.ERR);
+    this.service.getRanks().subscribe( { next : result => self.rank= result, error : err => self.rank = self.ERR});
   }
 
 }

@@ -1,0 +1,52 @@
+<div class="jumbotron">
+    <div class="card">
+        <div class="card-header">
+            <h4> Users Admin Panel</h4>
+        </div>
+        <div class="card-body">
+            <div class="mb-3 row">
+                <div class="col-xs-3 col-sm-auto">
+                    <button type="button" class=" btn-primary" routerLink="/admin/user/">Create</button>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Organisation</th>
+                        <th scope="col">Roles</th>
+                        <th scope="col">Submissions</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users; index as i">
+
+                        <td>{{ i }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.organisation  }}</td>
+                        <td>{{ user.roles}}</td>
+                        <td>{{ user.submissions}}</td>
+                        <td>
+                            <div ngbDropdown class="d-inline-block">
+                                <button type="button" class="btn btn-outline-primary" id="dropdown1"
+                                    ngbDropdownToggle>Actions</button>
+                                <div ngbDropdownMenu aria-labelledby="dropdown1">
+
+                                    <button ngbDropdownItem routerLink="/admin/user/{{user.id}}">Edit</button>
+                                    <button ngbDropdownItem>Start</button>
+                                    <button ngbDropdownItem (click)="delete(user.id)">Delete</button>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+    </div>
+</div>

@@ -1,13 +1,13 @@
 package net.trollheim.security.ctf.dto;
 
 public class FlagDetailsDto {
-    private int number;
+    private long number;
     private String title;
     private String description;
     private String url;
     private boolean submitted;
 
-    public FlagDetailsDto(int number, String title, String description, String url, boolean submitted) {
+    public FlagDetailsDto(long number, String title, String description, String url, boolean submitted) {
         this.number = number;
         this.title = title;
         this.description = description;
@@ -19,7 +19,7 @@ public class FlagDetailsDto {
     }
 
 
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 

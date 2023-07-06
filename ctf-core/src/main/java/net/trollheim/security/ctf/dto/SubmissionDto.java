@@ -6,16 +6,16 @@ import javax.validation.constraints.NotBlank;
 public class SubmissionDto {
 
 
-    private int flag;
+    private Long flag;
 
     @NotBlank
     private String code;
 
-    public int getFlag() {
+    public Long getFlag() {
         return flag;
     }
 
-    public void setFlag(int flag) {
+    public void setFlag(Long flag) {
         this.flag = flag;
     }
 

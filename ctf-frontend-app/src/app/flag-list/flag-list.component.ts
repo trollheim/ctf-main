@@ -17,7 +17,7 @@ export class FlagListComponent implements OnInit {
 
   ngOnInit(): void {
     var self = this
-    this.service.getFlags().then(flags => self.setFlags(flags)).catch(this.error);
+    this.service.getFlags().subscribe( { next : flags => self.setFlags(flags), error : this.error});
     
   }
 

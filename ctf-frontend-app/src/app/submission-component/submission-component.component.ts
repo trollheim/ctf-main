@@ -1,6 +1,6 @@
 import { FlagService } from './../flag.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-submission-component',
@@ -36,7 +36,7 @@ export class SubmissionComponentComponent implements OnInit {
     flag :"",
     code : ""
   }
-  constructor(private service:FlagService, private route: ActivatedRoute) { 
+  constructor(private service:FlagService, private route: ActivatedRoute,private router: Router) { 
     this.route.params.subscribe(params => {
       console.log(params);
       if (params['id']) {  
@@ -47,7 +47,12 @@ export class SubmissionComponentComponent implements OnInit {
 
   loadFlag(id){
     var self = this;
-    this.service.getFlag(id).then(result =>  self.setFlag(result)).catch(err=> self.flag = self.ERR);
+    this.service.getFlag(id).subscribe({
+      next : result =>  self.setFlag(result),
+      error : err=> self.flag = self.ERR
+    })
+    
+    
   }
 
 
@@ -64,14 +69,13 @@ setFlag(flag){
 submit(){
   var self = this;
   
-  this.service.submitFlag(this.submission).then(r=> self.submitted(r));
+  this.service.submitFlag(this.submission).subscribe(r=> self.submitted(r));
 }
 
 submitted(r){
-  //TODO find better way 
-  window.location.reload();
-
   alert(r);
+  this.router.navigate(['/flags']); 
+  
 }
 
 
