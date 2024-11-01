@@ -13,6 +13,11 @@ repositories {
     mavenCentral()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 dependencies {
     implementation project(':ctf-core')
     implementation 'org.springframework.boot:spring-boot-starter'
